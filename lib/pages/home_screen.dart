@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project/constant.dart';
 import 'package:get/get.dart';
+import 'package:project/controllers/task_controller.dart';
 import 'package:project/main.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -34,8 +35,8 @@ class MyFloatingActionButton extends StatelessWidget {
     return FloatingActionButton(
       heroTag: 'hero',
       onPressed: () {
-        Get.toNamed("/add_screen")!.then((value){
-              MyApp.changeColor(kLightBlueColor, Brightness.light);
+        Get.toNamed("/add_screen")!.then((value) {
+          MyApp.changeColor(kLightBlueColor, Brightness.light);
         });
       },
       elevation: 0,
@@ -70,34 +71,37 @@ class DownerContainer extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 20, left: 25, right: 25),
       child: ListView.separated(
-          itemBuilder: (context, index) {
-            return ListTile(
-              title: const Text('task1'),
-              subtitle: const Text('about the title'),
-              onTap: () {},
-              trailing: Checkbox(
-                activeColor: kLightBlueColor,
-                onChanged: (value) {},
-                value: true,
-                side: const BorderSide(
-                  color: Colors.black,
-                  width: 1,
-                ),
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(2.5),
-                  ),
+        itemBuilder: (context, index) {
+          return ListTile(
+            title:
+                Text(Get.find<TaskControllers>().tasks[index].taskTitle ?? ''),
+            subtitle:
+                Text(Get.find<TaskControllers>().tasks[index].taskSubtitle!),
+            onTap: () {},
+            trailing: Checkbox(
+              activeColor: kLightBlueColor,
+              onChanged: (value) {},
+              value: Get.find<TaskControllers>().tasks[index].status,
+              side: const BorderSide(
+                color: Colors.black,
+                width: 1,
+              ),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(2.5),
                 ),
               ),
-            );
-          },
-          separatorBuilder: (context, index) {
-            return const Divider(
-              color: Colors.black,
-              height: 2,
-            );
-          },
-          itemCount: 15),
+            ),
+          );
+        },
+        separatorBuilder: (context, index) {
+          return const Divider(
+            color: Colors.black,
+            height: 2,
+          );
+        },
+        itemCount: Get.find<TaskControllers>().tasks.length,
+      ),
     );
   }
 }
@@ -163,9 +167,9 @@ class UpperContainer extends StatelessWidget {
             ),
             Container(
               margin: const EdgeInsets.only(left: 52, top: 15),
-              child: const Text(
-                'Tasks',
-                style: TextStyle(
+              child:  Text(
+                '${Get.find<TaskControllers>().tasks.length} Tasks',
+                style: const TextStyle(
                   fontSize: 15,
                   color: Colors.white,
                 ),
