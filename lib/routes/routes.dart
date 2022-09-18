@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:todo_app/pages/add_task_screen.dart';
-import 'package:todo_app/pages/home_screen.dart';
+import 'package:project/pages/add_task_screen.dart';
+import 'package:project/pages/home_screen.dart';
 
 class Routes {
   static List<GetPage> get pages => [

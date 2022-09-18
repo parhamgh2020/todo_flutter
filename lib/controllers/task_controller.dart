@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:todo_app/models/task_model.dart';
+import 'package:project/models/task_model.dart';
 
 class TaskController extends GetxController {
   bool isEditing = false;

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:todo_app/constant.dart';
-import 'package:todo_app/controllers/task_controller.dart';
-import 'package:todo_app/controllers/textfield_controller.dart';
-import 'package:todo_app/main.dart';
-import 'package:todo_app/models/task_model.dart';
+import 'package:project/constant.dart';
+import 'package:project/controllers/task_controller.dart';
+import 'package:project/controllers/textfield_controller.dart';
+import 'package:project/main.dart';
+import 'package:project/models/task_model.dart';
 
 class AddTaskScreen extends StatelessWidget {
   const AddTaskScreen({Key? key}) : super(key: key);
